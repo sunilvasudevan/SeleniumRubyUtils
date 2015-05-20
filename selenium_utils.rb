@@ -16,6 +16,13 @@ module SeleniumUtils
   		wait = Selenium::WebDriver::Wait.new(timeout: timeout)
   		wait.until { !@selenium_driver.find_element(type, name).visible? }
 	end
+	
+	def is_element_present(type,element)
+		if @selenium_driver.find_elements(type, element).size() > 0
+			result = @selenium_driver.find_element(type,element).displayed? 
+		end
+		return result
+	end
 
 end
 
